@@ -1,8 +1,7 @@
-
 import streamlit as st
 import random
 
-# --- Turn 1 Data ---
+# --- Turn Data ---
 mission_data = [
     {
         "turn": 1,
@@ -58,7 +57,7 @@ st.title("Bible Realms: Esther Mission Simulation")
 if "ready" not in st.session_state:
     st.session_state.ready = False
 if "turn" not in st.session_state:
-    st.session_state.turn = 0
+    st.session_state.turn = 0  # Start at turn 0 to show summary
 if "timeline" not in st.session_state:
     st.session_state.timeline = 0
 if "favor" not in st.session_state:
@@ -83,67 +82,69 @@ if not st.session_state.ready:
     """)
     if st.button("Begin Mission"):
         st.session_state.ready = True
-        st.session_state.turn = 1
-       
-# --- Esther/Haman Summary Screen ---
-elif st.session_state.turn == 1 and "summary_shown" not in st.session_state:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image("Esther (chatGPT-Animation Creation).png", caption="Queen Esther", width=300)
+        st.session_state.turn = 0
 
+# --- Show Summary at Turn 0 ---
+elif st.session_state.turn == 0:
+# --- Esther’s Rise ---
+st.subheader("Esther’s Rise")
+col1, col2 = st.columns([2, 1])
+with col1:
     st.markdown("""
-    ### Esther’s Rise
     Esther was a young Jewish orphan raised by her cousin Mordecai. When Queen Vashti refused to appear before King Xerxes (also known as Ahasuerus) during a royal banquet, the king removed her from her position and launched a search for a new queen.
 
     Esther was taken to the palace and, after undergoing a 12-month beautification process, she was presented to the king. He was more pleased with Esther than any of the others and crowned her queen. At Mordecai’s instruction, Esther kept her Jewish identity secret.
 
     While stationed at the king’s gate, Mordecai overheard a plot by two royal officials—Bigthan and Teresh—to assassinate the king. He informed Esther, who passed the warning to Xerxes. After an investigation, the plot was confirmed, and the conspirators were executed. Mordecai’s act of loyalty was recorded in the royal chronicles, though no reward was given at the time.
     """)
+with col2:
+    st.image("Esther (chatGPT-Animation Creation).png", caption="Queen Esther", width=250)
 
-    st.image("Haman (Copilot).png", caption="Haman the Agagite", width=300)
+# --- Haman’s Plot ---
+st.subheader("Haman’s Plot Against the Jews")
+col3, col4 = st.columns([2, 1])
+with col3:
     st.markdown("""
-    ### Haman’s Plot Against the Jews
     Not long after Esther became queen, King Xerxes elevated a man named Haman the Agagite to a high position of authority. All royal officials were ordered to honor him, but Mordecai refused to bow, as a Jew loyal only to God.
 
     Infuriated, Haman sought revenge—not just on Mordecai, but on all Jews throughout the empire. He convinced Xerxes to issue a royal decree to annihilate every Jew, young and old, on a specific day. The king agreed, unaware of Esther’s heritage, and sealed it with his signet ring.
 
     When Mordecai learned of the decree, he tore his clothes, put on sackcloth and ashes, and went into public mourning. He sent word to Esther, urging her to go before the king and plead for her people’s lives—despite the risk of death for appearing uninvited.
     """)
-
-    if st.button("Continue to Turn 1"):
-        st.session_state.summary_shown = True
+with col4:
+    st.image("Haman (Copilot).png", caption="Haman the Agagite", width=250)
 # --- Main Mission Loop ---
 elif st.session_state.turn <= len(mission_data):
     current = mission_data[st.session_state.turn - 1]
     st.header(f"Turn {st.session_state.turn}")
     st.subheader(current["event"])
 
-        if f"submitted_{st.session_state.turn}" not in st.session_state:
-            if current["trivia"]:
-                st.markdown(f"**Trivia:** {current['trivia']}")
-                answer = st.radio("Choose your answer:", current["choices"], key=f"trivia_{st.session_state.turn}")
-                if st.button("Submit Answer"):
-                    dice = random.randint(1, 6)
-                    st.markdown(f"🎲 You rolled a **{dice}**")
+    if f"submitted_{st.session_state.turn}" not in st.session_state:
+        if current["trivia"]:
+            st.markdown(f"**Trivia:** {current['trivia']}")
+            answer = st.radio("Choose your answer:", current["choices"], key=f"trivia_{st.session_state.turn}")
+            if st.button("Submit Answer"):
+                dice = random.randint(1, 6)
+                st.markdown(f"🎲 You rolled a **{dice}**")
 
-                    if answer[0] == current["correct"]:
-                        st.success("Correct Answer!")
-                        st.info(current["outcome_correct"])
-                    else:
-                        st.error("Incorrect Answer!")
-                        st.warning(current["outcome_incorrect"])
-                        st.session_state.timeline += 1
+                if answer[0] == current["correct"]:
+                    st.success("Correct Answer!")
+                    st.info(current["outcome_correct"])
+                else:
+                    st.error("Incorrect Answer!")
+                    st.warning(current["outcome_incorrect"])
+                    st.session_state.timeline += 1
 
-                    st.session_state[f"submitted_{st.session_state.turn}"] = True
-            else:
-                st.success(current["outcome_correct"])
                 st.session_state[f"submitted_{st.session_state.turn}"] = True
+        else:
+            st.success(current["outcome_correct"])
+            st.session_state[f"submitted_{st.session_state.turn}"] = True
 
-        if f"submitted_{st.session_state.turn}" in st.session_state:
-            if st.button("Next"):
-                st.session_state.turn += 1
+    if f"submitted_{st.session_state.turn}" in st.session_state:
+        if st.button("Next"):
+            st.session_state.turn += 1
 
-# --- End of Game ---
+# --- Mission End ---
 else:
     st.header("Mission Complete!")
     if st.session_state.timeline < 6:
