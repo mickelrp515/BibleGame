@@ -143,7 +143,7 @@ elif st.session_state.turn <= len(mission_data):
                 dice = random.randint(1, 6)
                 st.markdown(f"🎲 You rolled a **{dice}**")
 
-                if answer[0] == current["correct"]:
+                if answer[0] == current["trivia"]["correct"]:
                     st.success("Correct Answer!")
                     st.info(current["outcome_correct"])
                 else:
