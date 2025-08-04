@@ -54,9 +54,19 @@ mission_data = [
 # --- Game Start ---
 st.title("Bible Realms: Esther Mission Simulation")
 
+# --- Initialize session state ---
 if "ready" not in st.session_state:
     st.session_state.ready = False
+if "turn" not in st.session_state:
+    st.session_state.turn = 0
+if "timeline" not in st.session_state:
+    st.session_state.timeline = 0
+if "favor" not in st.session_state:
+    st.session_state.favor = "Neutral"
+if "intercede_used" not in st.session_state:
+    st.session_state.intercede_used = False
 
+# --- Mission Setup ---
 if not st.session_state.ready:
     st.header("Mission Setup")
     st.markdown("""
@@ -74,12 +84,9 @@ if not st.session_state.ready:
     if st.button("Begin Mission"):
         st.session_state.ready = True
         st.session_state.turn = 1
-        st.session_state.timeline = 0
-        st.session_state.favor = "Neutral"
-        st.session_state.intercede_used = False
-
-# Now display the summaries AFTER the mission is initialized
-if st.session_state.ready and st.session_state.turn == 1:
+       
+# --- Esther/Haman Summary Screen ---
+elif st.session_state.turn == 1 and "summary_shown" not in st.session_state:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         st.image("Esther (chatGPT-Animation Creation).png", caption="Queen Esther", width=300)
