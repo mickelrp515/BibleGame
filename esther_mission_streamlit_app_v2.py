@@ -5,54 +5,61 @@ mission_data = [
     {
         "turn": 1,
         "event": "Mordecai appears at the gate in sackcloth.",
-        "challenge": {
-            "type": "wisdom",
+        "trigger": "He’s mourning, and you sense something is wrong. You send Hathach to find out more.",
+        "task": {
+            "type": "challenge",
+            "stat": "wisdom",
             "required_total": 8,
             "modifier": 4,
             "success_text": "You sense urgency and send Hathach to investigate.",
             "failure_text": "You hesitate, delaying Hathach’s mission. Timeline +1."
         },
-        "trivia": "Who raised Esther?",
-        "choices": ["A) Haman", "B) Mordecai", "C) Ezra", "D) Ruth"],
-        "correct": "B",
-        "outcome_correct": "Esther receives Mordecai’s message. The plan to intercede begins.",
-        "outcome_incorrect": "The message is delayed. Esther remains unaware. Timeline +1."
+        "trivia": {
+            "question": "Who raised Esther?",
+            "choices": ["A) Haman", "B) Mordecai", "C) Ezra", "D) Ruth"],
+            "correct": "B",
+            "outcome_correct": "Message delivered safely. Plan to intercede begins.",
+            "outcome_incorrect": "Message delayed. Esther remains unaware. Timeline +1."
+        }
     },
     {
         "turn": 2,
         "event": "Esther enters the throne room uninvited.",
-        "trivia": "What tribe was Haman descended from?",
-        "choices": ["A) Edom", "B) Egypt", "C) Amalek", "D) Babylon"],
-        "correct": "C",
-        "outcome_correct": "King trusts Esther. Favor +1.",
-        "outcome_incorrect": "Favor drops to Neutral."
+        "trivia": {
+            "question": "What tribe was Haman descended from?",
+            "choices": ["A) Edom", "B) Egypt", "C) Amalek", "D) Babylon"],
+            "correct": "C",
+            "outcome_correct": "King trusts Esther. Favor +1.",
+            "outcome_incorrect": "Favor drops to Neutral."
+        }
     },
     {
         "turn": 3,
         "event": "Esther hosts a banquet to buy time.",
-        "trivia": "What did Mordecai uncover?",
-        "choices": ["A) A forged decree", "B) A plot to poison him", "C) A plot to assassinate him", "D) A stolen royal seal"],
-        "correct": "C",
-        "outcome_correct": "King remembers Mordecai's loyalty.",
-        "outcome_incorrect": "No recognition for Mordecai yet."
+        "trivia": {
+            "question": "What did Mordecai uncover?",
+            "choices": ["A) A forged decree", "B) A plot to poison him", "C) A plot to assassinate him", "D) A stolen royal seal"],
+            "correct": "C",
+            "outcome_correct": "King remembers Mordecai's loyalty.",
+            "outcome_incorrect": "No recognition for Mordecai yet."
+        }
     },
     {
         "turn": 4,
         "event": "Esther suggests honoring Mordecai.",
-        "trivia": "What did Haman build intending to hang Mordecai?",
-        "choices": ["A) A stake", "B) A cross", "C) A pit", "D) A gallows"],
-        "correct": "D",
-        "outcome_correct": "Haman humiliated. Favor +1.",
-        "outcome_incorrect": "Haman retains influence."
+        "trivia": {
+            "question": "What did Haman build intending to hang Mordecai?",
+            "choices": ["A) A stake", "B) A cross", "C) A pit", "D) A gallows"],
+            "correct": "D",
+            "outcome_correct": "Haman humiliated. Favor +1.",
+            "outcome_incorrect": "Haman retains influence."
+        }
     },
     {
         "turn": 5,
         "event": "Esther uses Intercede and reveals Haman’s plot.",
-        "trivia": "",
-        "choices": [],
-        "correct": "",
-        "outcome_correct": "King commands Haman’s execution. Victory!",
-        "outcome_incorrect": ""
+        "trivia": None,
+        "outcome_correct": "King commands Haman’s execution. Victory!"
     }
 ]
 
