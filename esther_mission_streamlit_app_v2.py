@@ -86,33 +86,36 @@ if not st.session_state.ready:
 
 # --- Show Summary at Turn 0 ---
 elif st.session_state.turn == 0:
-# --- Esther’s Rise ---
-st.subheader("Esther’s Rise")
-col1, col2 = st.columns([2, 1])
-with col1:
-    st.markdown("""
-    Esther was a young Jewish orphan raised by her cousin Mordecai. When Queen Vashti refused to appear before King Xerxes (also known as Ahasuerus) during a royal banquet, the king removed her from her position and launched a search for a new queen.
+    # --- Esther’s Rise ---
+    st.subheader("Esther’s Rise")
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        st.markdown("""
+        Esther was a young Jewish orphan raised by her cousin Mordecai. When Queen Vashti refused to appear before King Xerxes (also known as Ahasuerus) during a royal banquet, the king removed her from her position and launched a search for a new queen.
 
-    Esther was taken to the palace and, after undergoing a 12-month beautification process, she was presented to the king. He was more pleased with Esther than any of the others and crowned her queen. At Mordecai’s instruction, Esther kept her Jewish identity secret.
+        Esther was taken to the palace and, after undergoing a 12-month beautification process, she was presented to the king. He was more pleased with Esther than any of the others and crowned her queen. At Mordecai’s instruction, Esther kept her Jewish identity secret.
 
-    While stationed at the king’s gate, Mordecai overheard a plot by two royal officials—Bigthan and Teresh—to assassinate the king. He informed Esther, who passed the warning to Xerxes. After an investigation, the plot was confirmed, and the conspirators were executed. Mordecai’s act of loyalty was recorded in the royal chronicles, though no reward was given at the time.
-    """)
-with col2:
-    st.image("Esther (chatGPT-Animation Creation).png", caption="Queen Esther", width=250)
+        While stationed at the king’s gate, Mordecai overheard a plot by two royal officials—Bigthan and Teresh—to assassinate the king. He informed Esther, who passed the warning to Xerxes. After an investigation, the plot was confirmed, and the conspirators were executed. Mordecai’s act of loyalty was recorded in the royal chronicles, though no reward was given at the time.
+        """)
+    with col2:
+        st.image("Esther (chatGPT-Animation Creation).png", caption="Queen Esther", width=250)
 
-# --- Haman’s Plot ---
-st.subheader("Haman’s Plot Against the Jews")
-col3, col4 = st.columns([2, 1])
-with col3:
-    st.markdown("""
-    Not long after Esther became queen, King Xerxes elevated a man named Haman the Agagite to a high position of authority. All royal officials were ordered to honor him, but Mordecai refused to bow, as a Jew loyal only to God.
+    # --- Haman’s Plot ---
+    st.subheader("Haman’s Plot Against the Jews")
+    col3, col4 = st.columns([2, 1])
+    with col3:
+        st.markdown("""
+        Not long after Esther became queen, King Xerxes elevated a man named Haman the Agagite to a high position of authority. All royal officials were ordered to honor him, but Mordecai refused to bow, as a Jew loyal only to God.
 
-    Infuriated, Haman sought revenge—not just on Mordecai, but on all Jews throughout the empire. He convinced Xerxes to issue a royal decree to annihilate every Jew, young and old, on a specific day. The king agreed, unaware of Esther’s heritage, and sealed it with his signet ring.
+        Infuriated, Haman sought revenge—not just on Mordecai, but on all Jews throughout the empire. He convinced Xerxes to issue a royal decree to annihilate every Jew, young and old, on a specific day. The king agreed, unaware of Esther’s heritage, and sealed it with his signet ring.
 
-    When Mordecai learned of the decree, he tore his clothes, put on sackcloth and ashes, and went into public mourning. He sent word to Esther, urging her to go before the king and plead for her people’s lives—despite the risk of death for appearing uninvited.
-    """)
-with col4:
-    st.image("Haman (Copilot).png", caption="Haman the Agagite", width=250)
+        When Mordecai learned of the decree, he tore his clothes, put on sackcloth and ashes, and went into public mourning. He sent word to Esther, urging her to go before the king and plead for her people’s lives—despite the risk of death for appearing uninvited.
+        """)
+    with col4:
+        st.image("Haman (Copilot).png", caption="Haman the Agagite", width=250)
+
+    if st.button("Continue to Turn 1"):
+        st.session_state.turn = 1
 # --- Main Mission Loop ---
 elif st.session_state.turn <= len(mission_data):
     current = mission_data[st.session_state.turn - 1]
