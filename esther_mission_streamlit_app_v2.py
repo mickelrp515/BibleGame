@@ -138,7 +138,7 @@ elif st.session_state.turn <= len(mission_data):
     if f"submitted_{st.session_state.turn}" not in st.session_state:
         if current["trivia"]:
             st.markdown(f"**Trivia:** {current['trivia']}")
-            answer = st.radio("Choose your answer:", current["choices"], key=f"trivia_{st.session_state.turn}")
+            answer = st.radio("Choose your answer:", current["trivia"]["choices"], key=f"trivia_{st.session_state.turn}")
             if st.button("Submit Answer"):
                 dice = random.randint(1, 6)
                 st.markdown(f"🎲 You rolled a **{dice}**")
