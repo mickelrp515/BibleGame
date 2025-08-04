@@ -1,11 +1,17 @@
 import streamlit as st
 import random
 
-# --- Turn Data ---
 mission_data = [
     {
         "turn": 1,
-        "event": "Mordecai appears in mourning.",
+        "event": "Mordecai appears at the gate in sackcloth.",
+        "challenge": {
+            "type": "wisdom",
+            "required_total": 8,
+            "modifier": 4,
+            "success_text": "You sense urgency and send Hathach to investigate.",
+            "failure_text": "You hesitate, delaying Hathach’s mission. Timeline +1."
+        },
         "trivia": "Who raised Esther?",
         "choices": ["A) Haman", "B) Mordecai", "C) Ezra", "D) Ruth"],
         "correct": "B",
