@@ -111,12 +111,12 @@ elif st.session_state.turn == 1 and "summary_shown" not in st.session_state:
     """)
 
     if st.button("Continue to Turn 1"):
-        st.session_state.turn += 1
-else:
-    if st.session_state.turn <= len(mission_data):
-        current = mission_data[st.session_state.turn - 1]
-        st.header(f"Turn {st.session_state.turn}")
-        st.subheader(current["event"])
+        st.session_state.summary_shown = True
+# --- Main Mission Loop ---
+elif st.session_state.turn <= len(mission_data):
+    current = mission_data[st.session_state.turn - 1]
+    st.header(f"Turn {st.session_state.turn}")
+    st.subheader(current["event"])
 
         if f"submitted_{st.session_state.turn}" not in st.session_state:
             if current["trivia"]:
@@ -142,13 +142,15 @@ else:
         if f"submitted_{st.session_state.turn}" in st.session_state:
             if st.button("Next"):
                 st.session_state.turn += 1
-    else:
-        st.header("Mission Complete!")
-        if st.session_state.timeline < 6:
-            st.success("🎉 Victory! The Jews were saved.")
-        else:
-            st.error("💀 Mission Failed. Haman's plot succeeded.")
 
-        if st.button("Restart Mission"):
-            for key in list(st.session_state.keys()):
-                del st.session_state[key]
+# --- End of Game ---
+else:
+    st.header("Mission Complete!")
+    if st.session_state.timeline < 6:
+        st.success("🎉 Victory! The Jews were saved.")
+    else:
+        st.error("💀 Mission Failed. Haman's plot succeeded.")
+
+    if st.button("Restart Mission"):
+        for key in list(st.session_state.keys()):
+            del st.session_state[key]
