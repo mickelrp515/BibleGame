@@ -145,10 +145,10 @@ elif st.session_state.turn <= len(mission_data):
 
                 if answer[0] == current["trivia"]["correct"]:
                     st.success("Correct Answer!")
-                    st.info(current["outcome_correct"])
+                    st.info(current["trivia"]["outcome_correct"])
                 else:
                     st.error("Incorrect Answer!")
-                    st.warning(current["outcome_incorrect"])
+                    st.warning(current["trivia"]["outcome_incorrect"])
                     st.session_state.timeline += 1
 
                 st.session_state[f"submitted_{st.session_state.turn}"] = True
