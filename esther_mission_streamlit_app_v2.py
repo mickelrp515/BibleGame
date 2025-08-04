@@ -33,7 +33,7 @@ if not st.session_state.ready:
 if st.session_state.ready and st.session_state.turn == 1:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.image("images/esther.png", caption="Queen Esther", width=300)
+        st.image("Esther (chatGPT-Animation Creation).png", caption="Queen Esther", width=300)
 
     st.markdown("""
     ### Esther’s Rise
@@ -44,7 +44,7 @@ if st.session_state.ready and st.session_state.turn == 1:
     While stationed at the king’s gate, Mordecai overheard a plot by two royal officials—Bigthan and Teresh—to assassinate the king. He informed Esther, who passed the warning to Xerxes. After an investigation, the plot was confirmed, and the conspirators were executed. Mordecai’s act of loyalty was recorded in the royal chronicles, though no reward was given at the time.
     """)
 
-    st.image("images/haman.png", caption="Haman the Agagite", width=300)
+    st.image("Haman (Copilot).png", caption="Haman the Agagite", width=300)
     st.markdown("""
     ### Haman’s Plot Against the Jews
     Not long after Esther became queen, King Xerxes elevated a man named Haman the Agagite to a high position of authority. All royal officials were ordered to honor him, but Mordecai refused to bow, as a Jew loyal only to God.
